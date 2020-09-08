@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title></title>
+
+    <link rel="stylesheet" href="styles/bullet-comment-wall.css">
+</head>
+<body>
+<div class="wall" id="wall">
+
+</div>
+<input id="comment-input" class="comment-input" placeholder="输入想发的弹幕吧~"/>
+<div class="buttons">
+    <button class="shoot" onclick="shoot()">发射</button>
+    <button class="clear" onclick="doClear()">清屏</button>
+</div>
+<script>
+    let comment = document.getElementById('comment-input')
+    let wall = document.getElementById('wall')
+
+    function shoot() {
+        let node = document.createElement('div')
+        let textNode = document.createTextNode(comment.value)
+        node.appendChild(textNode)
+        node.style.position = 'absolute'
+        node.style.top = Math.floor(Math.random() * 290) + 'px'
+        node.style.left = Math.floor(Math.random() * 1800) + 'px'
+        node.style.color = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`
+        node.style.fontSize = Math.random() * 32 + 'px'
+        wall.appendChild(node)
+        comment.value = ''
+    }
+
+    function doClear() {
+        console.log(1, wall.childNodes.length)
+        if (wall.childNodes.length - 1 > 0) {
+            console.log('jinru')
+            for (let i = wall.childNodes.length - 1; i >= 0; i--) {
+                console.log(wall.childNodes[i])
+                wall.removeChild(wall.childNodes[i])
+            }
+        }else{
+            alert('已经是空屏啦')
+        }
+    }
+</script>
+</body>
+</html>
