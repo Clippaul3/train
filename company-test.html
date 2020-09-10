@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title></title>
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles/company-test.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js">
+    </script>
+
+</head>
+<body>
+<div class="company">
+    <div class="header">
+        <div class="logo">
+            <img class="logo-img" src="images/logo.png">
+        </div>
+        <div class="company-name">英雄联盟</div>
+        <div class="nav-link" onclick="navigateTo('company-test.html')">首页</div>
+        <div class="nav-link" onclick="navigateTo('company-news-list.html')">新闻</div>
+        <div class="nav-link" onclick="navigateTo('company-about-us.html')">关于我们</div>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img class="swiper-image" src="images/game1.png"></div>
+            <div class="swiper-slide"><img class="swiper-image" src="images/game2.png"></div>
+            <div class="swiper-slide"><img class="swiper-image" src="images/game3.png"></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- 如果需要滚动条 -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+    <div class="body">
+        <div class="desc">
+            <div class="desc-title">服务范围</div>
+            <div class="desc-content">
+                <div class="desc-icon">
+                    <div>
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div>
+                        <span class="glyphicon glyphicon-tint"></span>
+                    </div>
+                    <div>
+                        <span class="glyphicon glyphicon-flash"></span>
+                    </div>
+                    <div>
+                        <span class="glyphicon glyphicon-piggy-bank"></span>
+                    </div>
+                </div>
+                <div class="desc-items" id="desc-items">
+                </div>
+            </div>
+        </div>
+        <div class="team">
+            <p class="team-title">团队介绍</p>
+            <div class="team-member" id="team-member"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-items">
+            <div>
+                <span class="glyphicon glyphicon-map-marker"></span>
+                <div>福州市仓山区万达</div>
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-envelope"></span>
+                <div>lol.qq.com</div>
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-earphone"></span>
+                <div>443-4396-2200</div>
+            </div>
+            <div>
+                <img class="footer-code" src="images/code2.png">
+            </div>
+        </div>
+        <div class="copyright">
+            版权所有©英雄联盟
+        </div>
+    </div>
+</div>
+<script src="scripts/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    let mySwiper = new Swiper('.swiper-container', {
+        // direction: 'vertical', // 垂直切换选项
+        loop: true, // 循环模式选项
+        autoplay: true,
+        delay: 2000,
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // 如果需要滚动条
+        // scrollbar: {
+        //     el: '.swiper-scrollbar',
+        // },
+    })
+    axios.get('http://mock-api.com/5n9e1Jno.mock/servicerange').then((res) => {
+        console.log(res)
+        let services = res.data
+        let serviceRange = document.getElementById('desc-items')
+        for (let i = 0; i < services.length; i++) {
+            let node = document.createElement('div')
+            let textNode = document.createTextNode(services[i])
+            node.appendChild(textNode)
+            serviceRange.appendChild(node)
+        }
+    })
+    axios.get('http://mock-api.com/5n9e1Jno.mock/team').then((res) => {
+        console.log(res)
+        let members = document.getElementById('team-member')
+        let memberList = res.data
+        for (let i = 0; i < memberList.length; i++) {
+            let member = document.createElement('div')
+            member.className = 'member'
+            let memberItem = document.createElement('div')
+            memberItem.className = 'member-item'
+            let imgNode = document.createElement('img')
+            imgNode.className = 'member-img'
+            let detailNode = document.createElement('div')
+            detailNode.className = 'member-detail'
+            let descNode = document.createElement('div')
+            descNode.className = 'member-desc'
+            let positionNode = document.createElement('div')
+            positionNode.className = 'member-position'
+            let nameNode = document.createElement('div')
+            nameNode.className = 'member-name'
+            let abilityNode = document.createElement('div')
+            abilityNode.className = 'member-ability'
+
+            let descTextNode = document.createTextNode(memberList[i].desc)
+            let positionTextNode = document.createTextNode(memberList[i].position)
+            let nameTextNode = document.createTextNode(memberList[i].name)
+            let abilityTextNode = document.createTextNode(memberList[i].ability)
+
+            imgNode.src = `images/${memberList[i].name}.png`
+            member.appendChild(imgNode)
+            nameNode.appendChild(nameTextNode)
+            detailNode.appendChild(nameNode)
+            positionNode.appendChild(positionTextNode)
+            detailNode.appendChild(positionNode)
+            descNode.appendChild(descTextNode)
+            detailNode.appendChild(descNode)
+            abilityNode.appendChild(abilityTextNode)
+            detailNode.appendChild(abilityNode)
+
+            memberItem.appendChild(member)
+            memberItem.appendChild(detailNode)
+            members.appendChild(memberItem)
+        }
+    })
+    let navigateTo = (url) => {
+        window.location.href = url
+    }
+</script>
+</body>
+</html>

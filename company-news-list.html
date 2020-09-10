@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title></title>
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles/company-test.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js">
+    </script>
+
+</head>
+<body>
+<div class="company">
+    <div class="header">
+        <div class="logo">
+            <img class="logo-img" src="images/logo.png">
+        </div>
+        <div class="company-name">英雄联盟</div>
+        <div class="nav-link" onclick="navigateTo('company-test.html')">首页</div>
+        <div class="nav-link" onclick="navigateTo('company-news-list.html')">新闻</div>
+        <div class="nav-link" onclick="navigateTo('company-about-us.html')">关于我们</div>
+    </div>
+    <div class="title-bar">
+    </div>
+    <div class="body">
+        <div class="news-list" id="news-list">
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-items">
+            <div>
+                <span class="glyphicon glyphicon-map-marker"></span>
+                <div>福州市仓山区万达</div>
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-envelope"></span>
+                <div>lol.qq.com</div>
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-earphone"></span>
+                <div>443-4396-2200</div>
+            </div>
+            <div>
+                <img class="footer-code" src="images/code2.png">
+            </div>
+        </div>
+        <div class="copyright">
+            版权所有©英雄联盟
+        </div>
+    </div>
+</div>
+<script src="scripts/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    axios.get('http://mock-api.com/5n9e1Jno.mock/newsList').then((res) => {
+        console.log(res)
+        let fatherNode = document.getElementById('news-list')
+        let newsList = res.data
+        for (let i = 0; i < newsList.length; i++) {
+            let newsItem = document.createElement('div')
+            let imgDiv = document.createElement('div')
+            let imgNode = document.createElement('img')
+            let infoNode = document.createElement('div')
+            let titleNode = document.createElement('div')
+            let dateNode = document.createElement('div')
+            let contentNode = document.createElement('div')
+
+            newsItem.className = 'news-item'
+            newsItem.onclick = ()=>{
+                window.location.href = 'company-news-detail.html'
+            }
+            imgDiv.className = 'news-img-node'
+            imgNode.className = 'news-image'
+            infoNode.className = 'news-info'
+            titleNode.className = 'news-title'
+            dateNode.className = 'news-date'
+            contentNode.className = 'news-content'
+
+            let titleTextNode = document.createTextNode(newsList[i].title)
+            let dateTextNode = document.createTextNode(newsList[i].date)
+            let contentTextNode = document.createTextNode(newsList[i].content)
+
+            imgNode.src = newsList[i].imageUrl
+            imgDiv.appendChild(imgNode)
+            titleNode.appendChild(titleTextNode)
+            infoNode.appendChild(titleNode)
+            dateNode.appendChild(dateTextNode)
+            infoNode.appendChild(dateNode)
+            contentNode.appendChild(contentTextNode)
+            infoNode.appendChild(contentNode)
+            newsItem.appendChild(imgDiv)
+            newsItem.appendChild(infoNode)
+            fatherNode.appendChild(newsItem)
+        }
+    })
+
+    let navigateTo = (url) => {
+        window.location.href = url
+    }
+</script>
+</body>
+</html>
