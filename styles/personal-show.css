@@ -62,6 +62,7 @@ a {
     align-items: flex-end;
     justify-content: space-between;
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .container-item {
