@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="height: 100%">
+<html style="min-height: 100%">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <title></title>
@@ -8,7 +8,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://unpkg.com/axios/dist/axios.min.js">
     </script>
-
 </head>
 <body>
 <div class="company">
@@ -69,12 +68,12 @@
             let contentNode = document.createElement('div')
 
             newsItem.className = 'item'
-            newsItem.onclick = ()=>{
+            newsItem.onclick = () => {
                 window.location.href = 'company-news-detail-react.html'
             }
-            imgDiv.className = 'col-md-3'
+            imgDiv.className = 'col-md-3 col-xs-3'
             imgNode.className = 'news-image'
-            infoNode.className = 'col-md-3'
+            infoNode.className = 'col-md-3 col-xs-3'
             titleNode.className = 'news-title'
             dateNode.className = 'news-date'
             contentNode.className = 'news-content'

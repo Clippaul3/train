@@ -2,16 +2,15 @@
 <html style="height: 100%">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">-->
     <title></title>
     <link rel="stylesheet" href="styles/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles/company-test.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://unpkg.com/axios/dist/axios.min.js">
     </script>
-
 </head>
-<body class="about">
+<body>
 <div class="company about-us">
     <div class="header">
         <div class="logo">
@@ -23,10 +22,10 @@
         <div class="nav-link" onclick="navigateTo('company-about-us-react.html')">关于我们</div>
     </div>
     <div class="about-us-title">关于我们</div>
-    <div class="body about-us-body">
-        <div class="about-us-info">
-            <div id="container" class="map"></div>
-            <div class="about-us-content">
+    <div class="body about-us-body container">
+        <div class="about-us-info row">
+            <div id="container" class="map col-md-6 col-xs-6"></div>
+            <div class="about-us-content col-md-6 col-xs-6">
                 <div>
                     在符文之地，魔法就是一切。 在这里，魔法不只是一种神秘莫测的能量概念。它是实体化的物质，
                     可以被引导、成形、塑造和操作。符文之地的魔法拥有自己的自然法则。源生态魔法随机变化的结果
@@ -76,9 +75,9 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript"
         src="https://webapi.amap.com/maps?v=1.4.15&key=b684be322b62ba5042552521db3e951f"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
     let map = new AMap.Map('container', {
         zoom: 11,//级别

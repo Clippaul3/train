@@ -1,3 +1,12 @@
+body{
+    height: 100%;
+}
+.company{
+    position: relative;
+    height: 100%;
+    padding-bottom: 300px;
+}
+
 .header {
     background: #F1F1F1;
     display: flex;
@@ -143,6 +152,8 @@
 }
 
 .footer {
+    position: absolute;
+    bottom: 0;
     text-align: center;
     background: rgb(215, 215, 215);
     width: 100%;
@@ -174,7 +185,6 @@
 }
 
 #container {
-    width: 50%;
     height: 280px;
 }
 
@@ -208,19 +218,14 @@
     margin-right: 20px;
 }
 
-.about {
-    height: 100%;
-}
 
 .about-us {
     height: 100%;
-    overflow: hidden;
 }
 
 
 .about-us-footer {
     padding-top: 140px;
-    height: 100%;
 }
 
 .title-bar {
@@ -310,4 +315,7 @@
 
 .detail-content{
     margin-bottom: 40px;
+}
+.col-xs-3{
+    overflow: hidden;
 }

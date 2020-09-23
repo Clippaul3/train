@@ -20,16 +20,21 @@
     let wall = document.getElementById('wall')
 
     function shoot() {
-        let node = document.createElement('div')
-        let textNode = document.createTextNode(comment.value)
-        node.appendChild(textNode)
-        node.style.position = 'absolute'
-        node.style.top = Math.floor(Math.random() * 290) + 'px'
-        node.style.left = Math.floor(Math.random() * 1800) + 'px'
-        node.style.color = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`
-        node.style.fontSize = Math.random() * 32 + 'px'
-        wall.appendChild(node)
-        comment.value = ''
+        if(comment.value){
+            let node = document.createElement('div')
+            let textNode = document.createTextNode(comment.value)
+            node.appendChild(textNode)
+            node.style.position = 'absolute'
+            node.style.top = Math.floor(Math.random() * 290) + 'px'
+            node.style.left = Math.floor(Math.random() * 1800) + 'px'
+            node.style.color = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`
+            node.style.fontSize = Math.random() * 32 + 'px'
+            wall.appendChild(node)
+            comment.value = ''
+        }else{
+            alert('输入不能为空')
+        }
+
     }
 
     function doClear() {
